@@ -48,7 +48,7 @@ It was a fun thought experiment :-)
 - [Spring Data JPA](https://spring.io/projects/spring-data-jpa) - Simplifies data access layers by reducing boilerplate code and providing a more fluid programming model;
 - [MySQL](https://www.mysql.com/) - An open-source relational database management system;
 - [Docker](https://www.docker.com/) - Docker is an open platform for developing, shipping, and running applications in containers;
-- [JDK 21](https://openjdk.java.net/) - The Java Development Kit used to develop Java applications (Note: Adjust version as per availability and project requirements).
+- [JDK 21](https://openjdk.java.net/) - The Java Development Kit used to develop Java applications.
 
 ### DevOps & CI/CD
 
