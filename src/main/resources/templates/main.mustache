@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Tool Rental</title>
+    <script src="https://unpkg.com/htmx.org" hx-debug="true"></script>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+            document.addEventListener('DOMContentLoaded', (event) => {
+                // Simulate a click on the "Available Products" button
+                document.querySelector('[hx-get="/model/products/available"]').click();
+            });
+    </script>
+</head>
+<body class="bg-gray-100">
+    <div class="container mx-auto px-4">
+        <h1 class="text-2xl font-bold mb-4">Tool Rental</h1>
+
+        <!-- Tab Navigation -->
+        <div class="mb-4">
+            <button hx-get="/model/products/available" hx-target="#content" hx-swap="innerHTML" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">Rental Checkout</button>
+            <button hx-get="/model/products" hx-target="#content" hx-swap="innerHTML" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">Products</button>
+            <button hx-get="/model/rates" hx-target="#content" hx-swap="innerHTML" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">Rates</button>
+            <button hx-get="/model/rentals/customer/1" hx-target="#content" hx-swap="innerHTML" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">Rentals</button>
+        </div>
+
+        <!-- Tab Content -->
+        <div id="content">
+            <!-- Content will automatically load here -->
+        </div>
+    </div>
+    <script>
+    document.body.addEventListener('htmx:afterSwap', function(evt) {
+        const today = new Date().toISOString().split('T')[0];
+        document.querySelectorAll('#' + evt.detail.target.id + ' input[type="date"]').forEach(function(input) {
+            input.setAttribute('min', today);
+            input.value = today;
+        });
+    });
+    </script>
+</body>
+</html>

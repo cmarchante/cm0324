@@ -1,0 +1,16 @@
+<div class="grid grid-cols-3 gap-4">
+    {{#rates}}
+    <div id="rate-{{type}}" class="bg-white rounded shadow p-4">
+        <h2 class="text-lg font-bold">Type: {{type}}</h2>
+        <p><strong>Daily Charge:</strong> ${{dailyCharge}}</p>
+        <p><strong>Weekday Charge:</strong> {{#weekdayCharge}}Yes{{/weekdayCharge}}{{^weekdayCharge}}No{{/weekdayCharge}}</p>
+        <p><strong>Weekend Charge:</strong> {{#weekendCharge}}Yes{{/weekendCharge}}{{^weekendCharge}}No{{/weekendCharge}}</p>
+        <p><strong>Holiday Charge:</strong> {{#holidayCharge}}Yes{{/holidayCharge}}{{^holidayCharge}}No{{/holidayCharge}}</p>
+    </div>
+    {{/rates}}
+    {{^rates}}
+    <div class="text-center">
+        <p>No rates found.</p>
+    </div>
+    {{/rates}}
+</div>

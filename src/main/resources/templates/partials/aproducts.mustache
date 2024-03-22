@@ -1,0 +1,25 @@
+{{#aproducts}}
+<div id="product-{{id}}" class="bg-white rounded shadow p-4 mb-4">
+    <h2 class="text-lg font-bold">{{name}}</h2>
+    <p>{{description}}</p>
+    <p><strong>Brand:</strong> {{brand}}</p>
+    <p><strong>Code:</strong> {{sku}}</p>
+    <p><strong>Rate:</strong> {{type}}</p>
+    <div id="estimate-{{id}}"><strong>Final Price:</strong> $0.00</div>
+    <div hx-get="/model/rental/estimate" hx-trigger="load" hx-target="#estimate-{{id}}" hx-include="#rental-form-{{id}}" hx-swap="innerHTML"></div>
+    <!-- Main form for creating a rental -->
+    <form id="rental-form-{{id}}" hx-post="/model/rental/create" hx-encoding="json" hx-target="#product-{{id}}" hx-swap="outerHTML">
+        <input type="hidden" name="productId" value="{{id}}">
+        <input type="hidden" name="customerId" value="1">
+        <label for="rentDate-{{id}}">Check Out Date</label>
+        <input id="rentDate-{{id}}" type="date" name="rentDate" required hx-get="/model/rental/estimate" hx-target="#estimate-{{id}}" hx-swap="innerHTML" hx-trigger="change" hx-include="#rental-form-{{id}}">
+        <label for="rentalDays-{{id}}">Days</label>
+        <input id="rentalDays-{{id}}" type="number" name="rentalDays" min="1" value="1" required hx-get="/model/rental/estimate" hx-target="#estimate-{{id}}" hx-swap="innerHTML" hx-trigger="input delay:500ms" hx-include="#rental-form-{{id}}">
+        <label for="percentDiscount-{{id}}">Discount %</label>
+        <input id="percentDiscount-{{id}}" type="number" name="percentDiscount" min="0" max="100" value="0" required hx-get="/model/rental/estimate" hx-target="#estimate-{{id}}" hx-swap="innerHTML" hx-trigger="input delay:500ms" hx-include="#rental-form-{{id}}">
+        <button type="submit" class="mt-3 bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded cursor-pointer">
+            Rent Product
+        </button>
+    </form>
+</div>
+{{/aproducts}}
